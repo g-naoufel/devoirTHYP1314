@@ -1,0 +1,73 @@
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+ function noter(lib) {
+         alert(lib);
+		
+		$.ajax({
+		
+			url      : document.location.protocol + '//localhost/E3/public/nf/noter/'+lib,
+			dataType : 'json',
+			success  : function (data) {                
+				//alert("popo");
+				
+				$("#affiche").append('gcvhbj');
+				//$('#affiche').append('gjhkjlk');
+			}
+		});
+}
+
+
+
+
+    
+//Call AJAX:
+//$(document).ready(supalb());
+
+
+
+</script> 
+ 
+ 
+ <?php
+ // module/Nf/view/nf/nf/index.phtml:
+
+ $title = 'My nf';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('nf', array('action'=>'add'));?>">Ajouter un nouveau Etudiant</a>
+ </p>
+
+ <table class="table">
+ <tr>
+ 
+     <th>Nom</th>
+    <th>Prénom</th>
+    <th>&nbsp;</th>
+ 
+ </tr>
+ <?php foreach ($nfs as $nf) : ?>
+ <tr>
+    <td><?php echo $this->escapeHtml($nf->title);?></td>
+    <td><?php echo $this->escapeHtml($nf->artist);?></td>
+     <td>
+         <a href="<?php echo $this->url('nf',
+             array('action'=>'edit', 'id' => $nf->id));?>">Modifier</a>
+         <a href="<?php echo $this->url('nf',
+             array('action'=>'delete', 'id' => $nf->id));?>">Supprimer</a>
+		 
+
+
+			
+		 <a onClick="noter(<?php echo $nf->id;?>)" href="">
+            
+            Noter</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>
+ 
+ 
+
+<div id="affiche"></div>
